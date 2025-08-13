@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artify Studio - নগদ পেমেন্ট</title>
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #f72585;
+            --success-color: #4cc9f0;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Segoe UI', 'Nirmala UI', sans-serif;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark-color);
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--success-color) 0%, rgba(76, 201, 240, 0) 70%);
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .logo {
+            max-width: 180px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .service-provider {
+            font-size: 14px;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+            padding: 5px 15px;
+            background-color: rgba(247, 37, 133, 0.1);
+            border-radius: 20px;
+        }
+        
+        .payment-number-container {
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(60, 207, 207, 0.1) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 25px 0;
+            border: 2px dashed rgba(67, 97, 238, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-number-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+        }
+        
+        .payment-number-label {
+            font-size: 14px;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 500;
+        }
+        
+        .payment-number {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 10px 0;
+            letter-spacing: 1px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(to right, #25D366, #128C7E);
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-whatsapp:hover {
+            background: linear-gradient(to right, #128C7E, #25D366);
+            box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+        }
+        
+        .btn-copy {
+            background: linear-gradient(to right, #7209b7, #4361ee);
+            padding: 8px 20px;
+            font-size: 14px;
+            margin-left: 10px;
+        }
+        
+        .instructions {
+            background-color: rgba(248, 249, 250, 0.7);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-color);
+            position: relative;
+        }
+        
+        .instructions h3 {
+            color: var(--secondary-color);
+            margin-top: 0;
+            font-size: 18px;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .instructions li::marker {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .verify-section {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .success-message {
+            color: var(--success-color);
+            font-weight: 600;
+            text-align: center;
+            margin: 15px 0;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .whatsapp-icon {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #6c757d;
+        }
+        
+        .artify-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .artify-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://i.postimg.cc/3wfN6BLJ/images-2.png" alt="নগদ লোগো" class="logo">
+            <h1>নগদ এ পেমেন্ট করুন</h1>
+            <div class="service-provider">Artify Studio</div>
+            <p>বিকাশ এর সাথে আমরা সরাসরি সংযুক্ত নই</p>
+        </div>
+
+        <div class="payment-number-container" id="paymentNumberContainer">
+            <span class="payment-number-label">পেমেন্ট করতে এই নম্বরটি ব্যবহার করুন:</span>
+            <div class="payment-number" id="paymentNumber">01970262017</div>
+            <button class="btn btn-copy" id="copyBtn">
+                <i class="fas fa-copy"></i> কপি করুন
+            </button>
+        </div>
+        <div id="copySuccess" class="hidden success-message">
+            <i class="fas fa-check-circle"></i> নম্বর কপি করা হয়েছে!
+        </div>
+
+        <div class="instructions">
+            <h3><i class="fas fa-info-circle"></i> পেমেন্ট করার নিয়ম:</h3>
+            <ol>
+                <li>উপরের নগদ নম্বরটি কপি করুন (কপি বাটনে ক্লিক করুন)</li>
+                <li>আপনার নগদ অ্যাপে গিয়ে পেমেন্ট করুন</li>
+                <li>পেমেন্ট সম্পন্ন হলে, নিচের বাটন ক্লিক করে WhatsApp এ স্ক্রিনশট পাঠান</li>
+                <li>স্ক্রিনশটে ট্রানজেকশন আইডি এবং আপনার ফোন নম্বর দেখাতে হবে</li>
+                <li>আমাদের টিম পেমেন্ট ভেরিফাই করবে</li>
+            </ol>
+        </div>
+
+        <div class="verify-section">
+            <h3><i class="fas fa-check-circle"></i> পেমেন্ট ভেরিফিকেশন</h3>
+            <p>পেমেন্ট সম্পন্ন হলে, WhatsApp এ স্ক্রিনশট পাঠিয়ে দিন:</p>
+            <a href="https://wa.me/8801970262017?text=পেমেন্ট%20ভেরিফিকেশন%20(Artify%20Studio)%0A%0Aট্রানজেকশন%20আইডি:%20%0Aফোন%20নম্বর:%20%0A%0Aদয়া করে স্ক্রিনশট সংযুক্ত করুন" class="btn btn-whatsapp" target="_blank" id="whatsappBtn">
+                <i class="fab fa-whatsapp whatsapp-icon"></i> WhatsApp এ ভেরিফাই করুন
+            </a>
+        </div>
+        
+        <div class="footer">
+            একটি <a href="https://www.facebook.com/share/1XeKmsJsEa/" class="artify-link" target="_blank">Artify Studio</a> পরিষেবা
+        </div>
+    </div>
+
+    <script>
+        // JavaScript functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyBtn = document.getElementById('copyBtn');
+            const paymentNumber = document.getElementById('paymentNumber');
+            const copySuccess = document.getElementById('copySuccess');
+            
+            function copyToClipboard() {
+                const textToCopy = paymentNumber.textContent.trim();
+                
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    copySuccess.classList.remove('hidden');
+                    setTimeout(() => {
+                        copySuccess.classList.add('hidden');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
+                });
+            }
+            
+            copyBtn.addEventListener('click', copyToClipboard);
+        });
+    </script>
+</body>
+</html>
